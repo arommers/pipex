@@ -1,7 +1,6 @@
 #include "../include/pipex.h"
 #include "../libft/libft.h"
 
-
 char	*get_path(char **envp);
 char	*make_path(char **path_split, char **cmd);
 
