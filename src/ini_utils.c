@@ -1,23 +1,21 @@
-#include "../include/pipex.h"
-#include "../libft/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ini_utils.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: arommers <arommers@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/04/03 14:31:53 by arommers      #+#    #+#                 */
+/*   Updated: 2023/04/03 15:11:05 by arommers      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*get_path(char **envp);
-char	*make_path(char **path_split, char **cmd);
+#include "pipex.h"
 
 // void	leaks(void)
 // {
 // 	system("leaks output");
 // }
-char	*get_path(char **envp)
-{
-	while (*envp)
-	{
-		if ((ft_strncmp(*envp, "PATH=", 5)) == 0)
-			return (*envp + 5);
-		envp++;
-	}
-	return (NULL);
-}
 
 char	*make_path(char **paths, char **cmd)
 {

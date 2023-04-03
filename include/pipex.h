@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/03 13:08:54 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/03 17:14:23 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@
 typedef struct s_data {
 	pid_t	child1;
 	pid_t	child2;
+	int		status;
 	int		infile;
 	int		outfile;
 	int		buffer[2];
 	char	*path;
 	char	**paths;
+	char	*cmd;
 	char	**args;
 }	t_data;
 
 void	intialize(t_data data, char **argv, char **envp);
+char	*get_path(t_data *data, char **envp);
+char	*check_path_array(t_data *data);
+void	run_child(t_data *data, char **argv, char **envp);
 
 #endif
