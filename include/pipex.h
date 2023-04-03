@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/03 12:46:19 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/03 13:08:54 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ typedef struct s_data {
 	char	**paths;
 	char	**args;
 }	t_data;
+
+void	intialize(t_data data, char **argv, char **envp);
 
 #endif
