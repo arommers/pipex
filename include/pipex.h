@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/31 13:50:09 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/02 08:58:01 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@
 # include <unistd.h> // for pipe, fork, execve, dup2, and close
 
 typedef struct s_data {
+	pid_t	child1;
+	pid_t	child2;
 	int		infile;
 	int		outfile;
-	char	**cmd1;
-	char	**cmd2;
+	int		fd[2];
+	char	*path_str;
+	char	**paths;
+	char	**cmd;
 }	t_data;
-
 
 #endif

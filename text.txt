@@ -1,0 +1,41 @@
+* The open() function is used to open a file.
+
+int open(const char *pathname, int flags, mode_t mode);
+
+- It takes three arguments: pathname, flags, and mode.
+- pathname is a string that specifies the name of the file to open.
+- flags is an integer that specifies the mode in which to open the file.
+- mode is an integer that specifies the file permissions to set if the file is created.
+- The function returns a file descriptor, which is a non-negative integer, if it is successful.
+- If an error occurs while opening the file, the function returns -1.
+- Use close to free up system resources and ensure that any data still in the buffer is written to the file before the program terminates
+
+O_RDONLY	Open for reading only.
+O_WRONLY	Open for writing only.
+O_RDWR	    Open for reading and writing.
+O_CREAT	    Create the file if it does not exist.
+O_EXCL	    When used with O_CREAT, the function will fail if the file already exists.
+O_TRUNC	    If the file already exists and is opened for writing, its contents are truncated.
+O_APPEND	If the file is opened for writing, the data is written at the end of the file
+
+* The access() function in C is used to check whether the calling process can access a file or directory with the specified file mode.
+The file mode is specified using one or more of the following constants:
+
+int access(const char *path, int mode);
+
+R_OK: Check if the file is readable.
+W_OK: Check if the file is writable.
+X_OK: Check if the file is executable.
+F_OK: Check if the file exists.
+
+The access() function takes two arguments: the path of the file or directory to check, and the file mode to check for.
+It returns 0 if the file can be accessed with the specified mode, and -1 if the file cannot be accessed
+
+* The dup2() function in C is used to duplicate an existing file descriptor, assigning it to a specific new file descriptor number.
+It is a simplified version of the dup() function, which assigns the lowest available file descriptor number to the duplicate file descriptor.
+
+int dup2(int oldfd, int newfd);
+
+The dup2() function takes two arguments: the file descriptor to be duplicated, and the new file descriptor number to which the duplicate should be assigned.
+If the new file descriptor number is already in use, the function first closes the file descriptor associated with the number, then duplicates the original file descriptor to the new file descriptor number.
+
