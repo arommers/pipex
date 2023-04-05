@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/03 17:11:56 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/05 11:22:26 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ char	*get_path(t_data *data, char **envp)
 	return (NULL);
 }
 
+char	*check_path_type(t_data *data)
+{
+	if (!data->paths || !*data->paths)
+	{
+		if (access(data->args[0], X_OK) == 0)
+			return (ft_strdup(data->args[0]));
+		else if (ft_strchr(data->args[0], '/') != NULL
+			&& access(data->args[0], X_OK) == 0)
+			return (ft_strdup(data->args[0]));
+	}
+	return (NULL);
+}
+
 char	*check_path_array(t_data *data)
 {
 	int		i;
@@ -34,13 +47,11 @@ char	*check_path_array(t_data *data)
 
 	i = 0;
 	if (!data->paths || !*data->paths)
-	{
-		if (access(data->args[0], X_OK) == 0)
-			return (ft_strdup(data->args[0]));
-	}
+		return (check_current_dir(data));
 	while (data->paths[i])
 	{
 		tmp = ft_strjoin(data->paths[i], "/");
+		tmp_array = ft_strjoin(tmp, data->args[0]);
 		if (access(tmp_array, X_OK) == 0)
 		{
 			free (tmp);
