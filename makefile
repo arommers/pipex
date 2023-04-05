@@ -6,22 +6,23 @@
 #    By: arommers <arommers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/29 11:13:20 by arommers      #+#    #+#                  #
-#    Updated: 2023/04/01 13:29:21 by adri          ########   odam.nl          #
+#    Updated: 2023/04/05 12:48:27 by arommers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = pipex
-BONUS =
+# BONUS =
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
-SRC =	./src/test3.c
-BONUS_SRC = 
+SRC =	./src/main.c ./src/initialize.c			\
+		./src/children.c ./src/miscellaneous.c
+# BONUS_SRC = 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
-BONUS_DIR = bonus_obj
-BONUS_OBJ = $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRC:.c=.o)))
+# BONUS_DIR = bonus_obj
+# BONUS_OBJ = $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRC:.c=.o)))
 
 BLACK   := \033[30m
 RED     := \033[31m
@@ -50,12 +51,12 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "     $(NAME) = NOW READY FOR USE!"
 	@echo "----------------------------------------$(RESET)"
 
-$(BONUS): $(LIBFT) $(BONUS_OBJ)
-	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
-	@$(CC) $(CFLAGS) -o $(BONUS) $(BONUS_OBJ) $(LIBFT)
-	@echo "$(BLUE)$(BOLD)----------------------------------------"
-	@echo "     $(BONUS) = NOW READY FOR USE!"
-	@echo "----------------------------------------$(RESET)"
+# $(BONUS): $(LIBFT) $(BONUS_OBJ)
+# 	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
+# 	@$(CC) $(CFLAGS) -o $(BONUS) $(BONUS_OBJ) $(LIBFT)
+# 	@echo "$(BLUE)$(BOLD)----------------------------------------"
+# 	@echo "     $(BONUS) = NOW READY FOR USE!"
+# 	@echo "----------------------------------------$(RESET)"
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
@@ -66,10 +67,10 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@echo "Compiled ✅ $(RED) $(BOLD) $^ $(RESET)"
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
 
-$(BONUS_DIR)/%.o: ./bonus/%.c
-	@mkdir -p $(BONUS_DIR)
-	@echo "Compiled ✅ $(BLUE) $(BOLD) $^ $(RESET)"
-	@$(CC) $(CFLAGS) -c -o $@ $^
+# $(BONUS_DIR)/%.o: ./bonus/%.c
+# 	@mkdir -p $(BONUS_DIR)
+# 	@echo "Compiled ✅ $(BLUE) $(BOLD) $^ $(RESET)"
+# 	@$(CC) $(CFLAGS) -c -o $@ $^
 
 clean:
 	@$(MAKE) clean -C ./libft
