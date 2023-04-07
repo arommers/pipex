@@ -6,11 +6,16 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 11:09:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/05 15:05:14 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/07 13:44:38 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	check_leaks(void)
+{
+	system("leaks pipex");
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -34,5 +39,8 @@ int	main(int argc, char **argv, char **envp)
 	close (data->buffer[1]);
 	waitpid(data->child1, &data->status, 0);
 	waitpid(data->child2, &data->status, 0);
+	ft_free(data->paths);
+	free(data);
+	atexit(check_leaks);
 	return (0);
 }

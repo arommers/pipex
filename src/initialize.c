@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/05 14:55:13 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/07 13:12:20 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ char	*check_alt_path(t_data *data)
 {
 	if (access(data->args[0], X_OK) == 0)
 		return (ft_strdup(data->args[0]));
-	else if (ft_strchr(data->args[0], '/') != NULL
-		&& access(data->args[0], X_OK) == 0)
-		return (ft_strdup(data->args[0]));
+// 	else if (ft_strchr(data->args[0], '/') != NULL
+// 		&& access(data->args[0], X_OK) == 0)
+// 		return (ft_strdup(data->args[0]));
 	return (NULL);
 }
 
@@ -43,8 +43,8 @@ char	*check_path_array(t_data *data)
 	char	*tmp_array;
 
 	i = 0;
-	if (!data->paths || !*data->paths)
-		return (check_alt_path(data));
+	if (check_alt_path(data) != NULL)
+		return (data->args[0]);
 	while (data->paths[i])
 	{
 		tmp = ft_strjoin(data->paths[i], "/");
@@ -69,6 +69,8 @@ void	initialize(t_data *data, char **argv, char **envp)
 	if (data->infile == -1 || data->outfile == -1)
 		error_msg("ERROR opening files:");
 	data->path = get_path(envp);
+	if (data->path == NULL)
+		error_msg("ERROR");
 	data->paths = ft_split(data->path, ':');
 	if (pipe (data->buffer) == -1)
 		error_msg("ERROR creating pipe:");
