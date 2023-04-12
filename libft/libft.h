@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/14 16:51:47 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/10 17:02:30 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/12 16:18:12 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char				*ft_strjoin(char *s1, char *s2);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strdup(const char *s);
+char				*ft_strndup(const char *s1, size_t n);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);

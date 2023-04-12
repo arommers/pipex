@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/10 16:59:56 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/12 18:04:43 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int		is_quote(char c);
 int		is_in_quotes(char c, int in_quotes, char quote_type);
 int		neo_strlen(const char *str, char c, char quote_type, int in_quotes);
 
+char	**check_cmd(t_data *data, char *argv);
+char	**split_quotes(t_data *data, char *cmd);
+
 void	error_msg(char *str);
 char	*get_path(char **envp);
 char	*check_alt_path(t_data *data);
@@ -47,6 +50,5 @@ char	*check_path_array(t_data *data);
 void	initialize(t_data *data, char **argv, char **envp);
 void	child_process_one(t_data *data, char **argv, char **envp);
 void	child_process_two(t_data *data, char **argv, char **envp);
-
 
 #endif

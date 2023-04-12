@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/10 16:57:34 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/12 13:36:31 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	initialize(t_data *data, char **argv, char **envp)
 	data->path = get_path(envp);
 	if (data->path == NULL)
 		error_msg("ERROR");
-	data->paths = neo_split(data->path, ':');
+	data->paths = ft_split(data->path, ':');
 	if (pipe (data->buffer) == -1)
 		error_msg("ERROR creating pipe:");
 }
