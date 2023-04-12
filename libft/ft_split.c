@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/04 14:25:35 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/01 13:52:53 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/10 17:01:31 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_free(char **s)
 	return (NULL);
 }
 
-static int	ft_get_rows(char const *s, char c)
+int	ft_get_rows(char const *s, char c)
 {
 	int	rows;
 	int	i;

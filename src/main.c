@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 11:09:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/07 13:44:38 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/10 17:36:00 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_leaks(void)
 {
-	system("leaks pipex");
+	system("leaks -q pipex");
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -41,6 +41,6 @@ int	main(int argc, char **argv, char **envp)
 	waitpid(data->child2, &data->status, 0);
 	ft_free(data->paths);
 	free(data);
-	atexit(check_leaks);
+	// atexit(check_leaks);
 	return (0);
 }

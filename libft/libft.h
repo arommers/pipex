@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/14 16:51:47 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/26 13:24:37 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/10 17:02:30 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa(int n);
 char				**ft_free(char **s);
+int					ft_get_rows(char const *s, char c);
 char				**ft_split(char const *s, char c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strtrim(char const *s1, char const *set);

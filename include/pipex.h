@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/05 13:06:11 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/10 16:59:56 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef struct s_data {
 	char	*cmd;
 	char	**args;
 }	t_data;
+
+char	**neo_split(char const *s, char c);
+int		is_quote(char c);
+int		is_in_quotes(char c, int in_quotes, char quote_type);
+int		neo_strlen(const char *str, char c, char quote_type, int in_quotes);
 
 void	error_msg(char *str);
 char	*get_path(char **envp);
