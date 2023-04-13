@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 14:45:39 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/12 18:04:55 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/13 16:55:21 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	child_process_one(t_data *data, char **argv, char **envp)
 	if (data->args == NULL)
 		error_msg("ERROR arguments not valid:");
 	data->cmd = check_path_array(data);
+	int k = 0;
+	while (data->args[k])
+	{
+    	int l = 0;
+    	while (data->args[k][l])
+    	{
+        	write(2, &data->args[k][l], 1);
+        	l++;
+    	}
+    	write(2, "\n", 1);  // add a newline after each row
+    	k++;
+	}
 	execve(data->cmd, data->args, envp);
 }
 

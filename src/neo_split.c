@@ -6,11 +6,27 @@
 /*   By: adri <adri@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/10 15:59:22 by adri          #+#    #+#                 */
-/*   Updated: 2023/04/12 18:04:32 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/13 16:41:34 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	neo_strlen(const char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		write(2, "\n", 1);
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
+	return (i);
+}
 
 char	**check_cmd(t_data *data, char *argv)
 {
@@ -49,15 +65,33 @@ char	**split_quotes(t_data *data, char *cmd)
 	data->args[0] = ft_strndup(cmd, (size_t)i);
 	if (!data->args[0])
 		return (NULL);
-	i++;
-	j = i;
-	while (cmd[j] && cmd[j] != cmd[i])
-		j++;
-	if (cmd[j] == cmd[i])
-		data->args[1] = ft_strndup(cmd + i, j - i);
-	else
-		data->args[1] = NULL;
+	i += 2;
+	j = neo_strlen(cmd + i, cmd[i - 1]);
+	data->args[1] = ft_strndup(cmd + i, (size_t)(j));
+	if (!data->args[1])
+		return (NULL);
+	// j = i;
+	// while (cmd[j])
+	// {
+	// 	j++;
+	// 	if (cmd[j] == cmd[i])
+	// 		data->args[1] = ft_strndup(cmd + i, j - i);
+	// 	else
+	// 		data->args[1] = NULL;
+	// }
 	data->args[2] = NULL;
+	int k = 0;
+	while (data->args[k])
+	{
+    	int l = 0;
+    	while (data->args[k][l])
+    	{
+        	write(2, &data->args[k][l], 1);
+        	l++;
+    	}
+    	write(2, "\n", 1);  // add a newline after each row
+    	k++;
+	}
 	return (data->args);
 }
 
