@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 16:14:28 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/12 16:19:30 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/14 12:57:15 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strndup(const char *str, size_t n)
 	size_t	i;
 
 	i = 0;
-	dst = (char *) malloc(i);
+	dst = (char *) malloc(n + 1);
 	if (dst == NULL)
 		return (NULL);
 	while (str[i] && i < n)

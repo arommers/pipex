@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/13 17:02:46 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/14 13:41:12 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ char	*check_alt_path(t_data *data)
 {
 	if (access(data->args[0], X_OK) == 0)
 		return (ft_strdup(data->args[0]));
-// 	else if (ft_strchr(data->args[0], '/') != NULL
-// 		&& access(data->args[0], X_OK) == 0)
-// 		return (ft_strdup(data->args[0]));
 	return (NULL);
 }
 

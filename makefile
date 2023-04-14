@@ -6,7 +6,7 @@
 #    By: arommers <arommers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/29 11:13:20 by arommers      #+#    #+#                  #
-#    Updated: 2023/04/13 12:09:54 by arommers      ########   odam.nl          #
+#    Updated: 2023/04/14 13:44:53 by arommers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = ./libft/libft.a
 INCLUDE = -I./include
 SRC =	./src/main.c ./src/initialize.c			\
 		./src/children.c ./src/miscellaneous.c	\
-		./src/neo_split.c
+		./src/split_quote.c
 # BONUS_SRC = 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))

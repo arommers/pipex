@@ -6,13 +6,13 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/21 12:35:28 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/21 12:33:39 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/14 15:15:42 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -25,4 +25,5 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 		}
 	}
+	return (fd);
 }
