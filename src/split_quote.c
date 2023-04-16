@@ -6,7 +6,7 @@
 /*   By: adri <adri@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/10 15:59:22 by adri          #+#    #+#                 */
-/*   Updated: 2023/04/14 15:43:27 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/16 12:26:47 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	**check_cmd(t_data *data, char *argv)
 
 	i = 0;
 	if (!argv || !*argv)
-		error_msg("not good");
+		error_msg("ERROR: no command provided");
 	while (argv[i] && argv[i] != '\'' && argv[i] != '"')
 		i++;
 	if (argv[i] == '"' || argv[i] == '\'')
@@ -42,7 +42,7 @@ char	**check_cmd(t_data *data, char *argv)
 		while (argv[j] && argv[j] != argv[i])
 			j++;
 		if (!argv[j])
-			error_msg("unmatched quote");
+			error_msg("ERROR: unmatched quote");
 		return (split_quotes(data, argv));
 	}
 	else

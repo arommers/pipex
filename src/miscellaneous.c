@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/16 11:58:52 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/16 12:41:22 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // 	exit(EXIT_FAILURE);
 // }
 
-int error_msg(char *msg)
+void error_msg(char *msg)
 {
     int status = 1;
     if (errno == EACCES)
