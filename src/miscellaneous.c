@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/14 14:57:33 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/16 11:58:52 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,18 @@
 // 	exit(EXIT_FAILURE);
 // }
 
-void	error_msg(char *msg)
+int error_msg(char *msg)
 {
-	perror(msg);
-	exit(errno);
+    int status = 1;
+    if (errno == EACCES)
+        status = 126;
+    else if (errno == ENOENT || errno == ENOTDIR)
+        status = 127;
+    else if (errno == ENOEXEC)
+        status = 126;
+    else if (errno == EINTR)
+        status = 130;
+    write(STDERR_FILENO, msg, ft_strlen(msg));
+    write(STDERR_FILENO, "\n", 1);
+    exit(status);
 }
