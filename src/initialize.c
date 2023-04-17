@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/14 13:41:12 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/17 13:53:14 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,17 @@ char	*check_path_array(t_data *data)
 		free (tmp_array);
 		i++;
 	}
+	error_msg(data->args[0], 1);
 	return (NULL);
 }
 
-void	initialize(t_data *data, char **argv, char **envp)
+void	initialize(t_data *data, char **envp)
 {
 	data->status = 0;
-	data->infile = open(argv[1], O_RDONLY);
-	data->outfile = open(argv[4], O_CREAT | O_TRUNC | O_RDWR, 0666);
-	if (data->infile == -1 || data->outfile == -1)
-		error_msg("ERROR opening files:");
 	data->path = get_path(envp);
 	if (data->path == NULL)
-		error_msg("ERROR");
+		exit (0);
 	data->paths = ft_split(data->path, ':');
 	if (pipe (data->buffer) == -1)
-		error_msg("ERROR creating pipe:");
+		error_msg("ERROR creating pipe:", 0);
 }
