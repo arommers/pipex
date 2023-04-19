@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   initialize.c                                       :+:    :+:            */
+/*   utilities.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 10:24:52 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/19 16:36:46 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,29 @@ char	*check_path_array(t_data *data)
 	return (NULL);
 }
 
-void	initialize(t_data *data, char **envp)
+void	initialize(t_data *data, char **argv, char **envp)
 {
 	data->status = 0;
 	data->path = get_path(envp);
 	if (data->path == NULL)
-		exit (0);
+		unset_error(argv, 2);
+	// {
+	// 	data->paths = ft_split(argv[3], ' ');
+	// 	error_msg(data->paths[0], 1);
+	// }
 	data->paths = ft_split(data->path, ':');
 	if (pipe (data->buffer) == -1)
 		error_msg("ERROR creating pipe:", 0);
+}
+
+void	de_initialize(t_data *data)
+{
+	close (data->buffer[0]);
+	close (data->buffer[1]);
+	waitpid(data->child1, NULL, 0);
+	waitpid(data->child2, &data->status, 0);
+	if (WIFEXITED(data->status))
+		data->status = WEXITSTATUS(data->status);
+	else
+		data->status = 1;
 }

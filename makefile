@@ -6,7 +6,7 @@
 #    By: arommers <arommers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/29 11:13:20 by arommers      #+#    #+#                  #
-#    Updated: 2023/04/14 13:44:53 by arommers      ########   odam.nl          #
+#    Updated: 2023/04/19 13:42:43 by arommers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME = pipex
 # BONUS =
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
-SRC =	./src/main.c ./src/initialize.c			\
-		./src/children.c ./src/miscellaneous.c	\
+SRC =	./src/main.c ./src/utilities.c	\
+		./src/children.c ./src/error.c	\
 		./src/split_quote.c
 # BONUS_SRC = 
 OBJ_DIR = obj

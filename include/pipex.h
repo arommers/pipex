@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 10:58:00 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/19 16:37:17 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ char	**check_cmd(t_data *data, char *argv);
 char	**split_quotes(t_data *data, char *cmd);
 
 void	error_msg(char *str, int i);
+void	unset_error(char **argv, int i);
 char	*get_path(char **envp);
 char	*check_alt_path(t_data *data);
 char	*check_path_array(t_data *data);
-void	initialize(t_data *data, char **envp);
+void	initialize(t_data *data, char **argv, char **envp);
+void	de_initialize(t_data *data);
 void	child_process_one(t_data *data, char **argv, char **envp);
 void	child_process_two(t_data *data, char **argv, char **envp);
 
