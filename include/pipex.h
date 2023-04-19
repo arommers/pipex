@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 16:37:17 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/19 21:06:23 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ char	**check_cmd(t_data *data, char *argv);
 char	**split_quotes(t_data *data, char *cmd);
 
 void	error_msg(char *str, int i);
-void	unset_error(char **argv, int i);
+void	unset_error(t_data *data, char **argv, int i);
+int		check_infile(char **argv);
 char	*get_path(char **envp);
 char	*check_alt_path(t_data *data);
 char	*check_path_array(t_data *data);
