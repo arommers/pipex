@@ -6,16 +6,11 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 11:09:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/14 15:22:26 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/19 10:23:11 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// void	check_leaks(void)
-// {
-// 	system("leaks -q pipex");
-// }
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -23,24 +18,25 @@ int	main(int argc, char **argv, char **envp)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (argc != 5)
-		return (ft_putstr_fd("Invalid number of arguments\n", 0));
-	initialize(data, argv, envp);
+		error_msg("Invalid number of arguments\n", 1);
+	initialize(data, envp);
 	data->child1 = fork();
 	if (data->child1 == -1)
-		error_msg("ERROR making babies:");
+		error_msg("ERROR making babies:", 0);
 	if (data->child1 == 0)
 		child_process_one(data, argv, envp);
 	data->child2 = fork();
 	if (data->child2 == -1)
-		error_msg("ERROR making babies:");
+		error_msg("ERROR making babies:", 0);
 	if (data->child2 == 0)
 		child_process_two(data, argv, envp);
 	close (data->buffer[0]);
 	close (data->buffer[1]);
-	waitpid(data->child1, &data->status, 0);
+	waitpid(data->child1, NULL, 0);
 	waitpid(data->child2, &data->status, 0);
-	ft_free(data->paths);
-	free(data);
-	// atexit(check_leaks);
-	return (0);
+	if (WIFEXITED(data->status))
+		data->status = WEXITSTATUS(data->status);
+	else
+		data->status = 1;
+	exit (data->status);
 }
