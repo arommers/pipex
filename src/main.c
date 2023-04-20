@@ -6,17 +6,25 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 11:09:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 14:53:30 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/20 12:14:10 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	leaks(void)
+{
+	system("leaks -q pipex");
+}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_data	*data;
 
 	data = ft_calloc(1, sizeof(t_data));
+	if (!data)
+		exit(1);
+	atexit(leaks);
 	if (argc != 5)
 		error_msg("Invalid nbr of arguments\n", 1);
 	initialize(data, argv, envp);

@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 21:37:08 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/20 12:25:40 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,20 @@ int	check_infile(char **argv)
 		return (1);
 	}
 	else
-		return(0);
+		return (0);
 }
 
 void	unset_error(t_data *data, char **argv, int i)
 {
 	if (check_infile(argv))
 	{
-			data->paths = ft_split(argv[3], ' ');
-			ft_putstr_fd("pipex: ", 2);
-			ft_putstr_fd(data->paths[0], 2);
-			ft_putstr_fd(": ", 2);
-			ft_putstr_fd("No such file or directory", 2);
-			ft_putstr_fd("\n", 2);
+		data->paths = ft_split(argv[3], ' ');
+		ft_putstr_fd("pipex: ", 2);
+		ft_putstr_fd(data->paths[0], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd("No such file or directory", 2);
+		ft_putstr_fd("\n", 2);
+		ft_free(data->paths);
 	}
 	else
 	{
@@ -48,6 +49,7 @@ void	unset_error(t_data *data, char **argv, int i)
 			ft_putstr_fd(": ", 2);
 			ft_putstr_fd("No such file or directory", 2);
 			ft_putstr_fd("\n", 2);
+			ft_free(data->paths);
 		}
 	}
 	exit (127);

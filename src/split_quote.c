@@ -6,7 +6,7 @@
 /*   By: adri <adri@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/10 15:59:22 by adri          #+#    #+#                 */
-/*   Updated: 2023/04/19 10:26:54 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/20 10:53:33 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ char	**split_quotes(t_data *data, char *cmd)
 		return (NULL);
 	i = 0;
 	while (cmd[i] && cmd[i] != ' ')
+	{
+		while (cmd[i] == ' ' && cmd[i + 1] != '\0')
+			i++;
 		i++;
+	}
 	data->args[0] = ft_strndup(cmd, (size_t)i);
 	if (!data->args[0])
 		return (NULL);
