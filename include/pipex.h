@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/19 21:06:23 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/22 14:50:26 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,26 @@ typedef struct s_data {
 	int		buffer[2];
 	char	*path;
 	char	**paths;
-	char	*cmd;
-	char	**args;
+	char	*cmd1;
+	char	*cmd2;
+	char	**args1;
+	char	**args2;
 }	t_data;
 
-char	**neo_split(char const *s, char c);
-int		is_quote(char c);
-int		is_in_quotes(char c, int in_quotes, char quote_type);
 int		neo_strlen(const char *str, char c);
+char	**check_cmd(char *argv);
+char	**split_quotes(char **tmp, char *cmd);
 
-char	**check_cmd(t_data *data, char *argv);
-char	**split_quotes(t_data *data, char *cmd);
-
+void	input_check(t_data *data, char **argv, char **envp);
 void	error_msg(char *str, int i);
 void	unset_error(t_data *data, char **argv, int i);
 int		check_infile(char **argv);
 char	*get_path(char **envp);
-char	*check_alt_path(t_data *data);
-char	*check_path_array(t_data *data);
+char	*check_alt_path(char *arg);
+char	*check_path_array(t_data *data, char *args);
 void	initialize(t_data *data, char **argv, char **envp);
 void	de_initialize(t_data *data);
-void	child_process_one(t_data *data, char **argv, char **envp);
-void	child_process_two(t_data *data, char **argv, char **envp);
+void	child_process_one(t_data *data, char **envp);
+void	child_process_two(t_data *data, char **envp);
 
 #endif

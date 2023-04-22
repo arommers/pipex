@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/20 10:40:19 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/22 15:17:39 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,28 @@ char	*get_path(char **envp)
 	return (NULL);
 }
 
-char	*check_alt_path(t_data *data)
+char	*check_alt_path(char *arg)
 {
-	if (access(data->args[0], X_OK) == 0)
-		return (ft_strdup(data->args[0]));
+	if (access(arg, X_OK) == 0)
+		return (arg);
 	return (NULL);
 }
 
-char	*check_path_array(t_data *data)
+char	*check_path_array(t_data *data, char *args)
 {
 	int		i;
 	char	*tmp;
 	char	*tmp_array;
+	char	*cmd_arg;
 
 	i = 0;
-	if (check_alt_path(data) != NULL)
-		return (data->args[0]);
+	cmd_arg = args;
+	if (check_alt_path(cmd_arg) != NULL)
+		return (cmd_arg);
 	while (data->paths[i])
 	{
-		tmp = ft_strjoin(data->paths[i], "/");
-		tmp_array = ft_strjoin(tmp, data->args[0]);
+		tmp = ft_strjoin(data->paths[i++], "/");
+		tmp_array = ft_strjoin(tmp, cmd_arg);
 		if (access(tmp_array, X_OK) == 0)
 		{
 			free (tmp);
@@ -53,23 +55,21 @@ char	*check_path_array(t_data *data)
 		}
 		free (tmp);
 		free (tmp_array);
-		i++;
 	}
-	error_msg(data->args[0], 1);
-	return (NULL);
+	return (cmd_arg);
 }
 
-void	initialize(t_data *data, char **argv, char **envp)
-{
-	data->status = 0;
-	data->path = get_path(envp);
-	if (data->path == NULL && access(argv[2], X_OK) == -1
-		&& access(argv[3], X_OK) == -1)
-		unset_error(data, argv, 2);
-	data->paths = ft_split(data->path, ':');
-	if (pipe (data->buffer) == -1)
-		error_msg("ERROR creating pipe:", 0);
-}
+// void	initialize(t_data *data, char **argv, char **envp)
+// {
+// 	data->status = 0;
+// 	// data->path = get_path(envp);
+// 	// if (data->path == NULL && access(argv[2], X_OK) == -1
+// 	// 	&& access(argv[3], X_OK) == -1)
+// 	// 	unset_error(data, argv, 2);
+// 	// data->paths = ft_split(data->path, ':');
+// 	if (pipe (data->buffer) == -1)
+// 		error_msg("ERROR creating pipe:", 0);
+// }
 
 void	de_initialize(t_data *data)
 {

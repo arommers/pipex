@@ -6,12 +6,12 @@
 #    By: arommers <arommers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/29 11:13:20 by arommers      #+#    #+#                  #
-#    Updated: 2023/04/19 13:42:43 by arommers      ########   odam.nl          #
+#    Updated: 2023/04/20 15:48:49 by arommers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = pipex
 # BONUS =
 LIBFT = ./libft/libft.a
