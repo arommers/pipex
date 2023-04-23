@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/23 11:40:03 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/23 15:13:23 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	input_check(t_data *data, char **argv, char **envp)
 		error_msg(data->cmd2, 1);
 	data->status = 0;
 }
-
 
 int	check_infile(char **argv)
 {
