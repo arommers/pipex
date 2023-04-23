@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/22 15:17:39 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/23 11:05:46 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,15 @@ char	*check_path_array(t_data *data, char *args)
 	return (cmd_arg);
 }
 
-// void	initialize(t_data *data, char **argv, char **envp)
-// {
-// 	data->status = 0;
+void	initialize(t_data *data, char **argv, char **envp)
+{
+	data->status = 0;
+	data->path = get_path(envp);
+	data->paths = ft_split(data->path, ':');
+	data->args1 = check_cmd(argv[2]);
+	data->args2 = check_cmd(argv[3]);
+	data->cmd1 = check_path_array(data, data->args1[0]);
+	data->cmd2 = check_path_array(data, data->args2[0]);
 // 	// data->path = get_path(envp);
 // 	// if (data->path == NULL && access(argv[2], X_OK) == -1
 // 	// 	&& access(argv[3], X_OK) == -1)
@@ -69,7 +75,7 @@ char	*check_path_array(t_data *data, char *args)
 // 	// data->paths = ft_split(data->path, ':');
 // 	if (pipe (data->buffer) == -1)
 // 		error_msg("ERROR creating pipe:", 0);
-// }
+}
 
 void	de_initialize(t_data *data)
 {

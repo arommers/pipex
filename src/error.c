@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/22 16:11:57 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/23 11:40:03 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ void	input_check(t_data *data, char **argv, char **envp)
 	data->outfile = open(argv[4], O_CREAT | O_TRUNC | O_RDWR, 0666);
 	if (data->outfile == -1)
 		error_msg(argv[4], 0);
-	data->path = get_path(envp);
-	data->paths = ft_split(data->path, ':');
-	data->args1 = check_cmd(argv[2]);
-	data->args2 = check_cmd(argv[3]);
-	data->cmd1 = check_path_array(data, data->args1[0]);
-	data->cmd2 = check_path_array(data, data->args2[0]);
+	initialize(data, argv, envp);
 	if (access(data->cmd1, X_OK) == -1 && access(data->cmd2, X_OK) == -1)
 	{
 		ft_printf("pipex: %s: command not found\n", data->cmd1);
@@ -33,7 +28,9 @@ void	input_check(t_data *data, char **argv, char **envp)
 		exit(127);
 	}
 	if (access(data->cmd1, X_OK) == -1 && access(data->cmd2, X_OK) == 0)
+	{
 		ft_printf("pipex: %s: command not found\n", data->cmd1);
+	}
 	else if (access(data->cmd1, X_OK) == -1)
 		error_msg(data->cmd1, 1);
 	else if (access(data->cmd2, X_OK) == -1)
