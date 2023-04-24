@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 14:45:39 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/23 12:31:50 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/24 11:31:50 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	child_process_two(t_data *data, char **envp)
 	close (data->buffer[0]);
 	if (execve(data->cmd2, data->args2, envp) == -1)
 		exit (EXIT_FAILURE);
-
 }

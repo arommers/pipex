@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 11:13:24 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/22 14:50:26 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/24 14:39:19 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**check_cmd(char *argv);
 char	**split_quotes(char **tmp, char *cmd);
 
 void	input_check(t_data *data, char **argv, char **envp);
-void	error_msg(char *str, int i);
+void	error_msg(char *str, int i, int j);
 void	unset_error(t_data *data, char **argv, int i);
 int		check_infile(char **argv);
 char	*get_path(char **envp);
@@ -52,5 +52,7 @@ void	initialize(t_data *data, char **argv, char **envp);
 void	de_initialize(t_data *data);
 void	child_process_one(t_data *data, char **envp);
 void	child_process_two(t_data *data, char **envp);
+void	no_path_check(t_data *data, char **argv);
+void	grep_check(t_data *data, char **argv);
 
 #endif
