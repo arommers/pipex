@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 14:45:39 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/24 11:31:50 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/24 20:44:32 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	child_process_one(t_data *data, char **envp)
 	dup2 (data->infile, STDIN_FILENO);
 	dup2 (data->buffer[1], STDOUT_FILENO);
 	close (data->buffer[1]);
+	if (data->infile == -1)
+		exit(EXIT_FAILURE);
 	if (execve(data->cmd1, data->args1, envp) == -1)
 		exit (EXIT_FAILURE);
 }
