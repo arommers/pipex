@@ -6,7 +6,7 @@
 /*   By: adri <adri@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/10 15:59:22 by adri          #+#    #+#                 */
-/*   Updated: 2023/04/24 09:20:24 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/25 22:44:23 by adri          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**check_cmd(char *argv)
 	i = 0;
 	tmp = NULL;
 	if (!argv || !*argv)
-		error_msg("not good", 0, 0);
+		error_msg("", 0, 0);
 	while (argv[i] && argv[i] != '\'' && argv[i] != '"')
 		i++;
 	if (argv[i] == '"' || argv[i] == '\'')
