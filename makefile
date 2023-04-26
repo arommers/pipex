@@ -6,24 +6,22 @@
 #    By: arommers <arommers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/03/29 11:13:20 by arommers      #+#    #+#                  #
-#    Updated: 2023/04/25 21:22:17 by adri          ########   odam.nl          #
+#    Updated: 2023/04/26 10:55:48 by arommers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = pipex
-# BONUS =
+
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
 SRC =	./src/main.c ./src/utilities.c	\
 		./src/children.c ./src/error.c	\
 		./src/split_quote.c
-# BONUS_SRC = 
+
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
-# BONUS_DIR = bonus_obj
-# BONUS_OBJ = $(addprefix $(BONUS_DIR)/, $(notdir $(BONUS_SRC:.c=.o)))
 
 BLACK   := \033[30m
 RED     := \033[31m
@@ -52,13 +50,6 @@ $(NAME): $(LIBFT) $(OBJ)
 	@echo "     $(NAME) = NOW READY FOR USE!"
 	@echo "----------------------------------------$(RESET)"
 
-# $(BONUS): $(LIBFT) $(BONUS_OBJ)
-# 	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
-# 	@$(CC) $(CFLAGS) -o $(BONUS) $(BONUS_OBJ) $(LIBFT)
-# 	@echo "$(BLUE)$(BOLD)----------------------------------------"
-# 	@echo "     $(BONUS) = NOW READY FOR USE!"
-# 	@echo "----------------------------------------$(RESET)"
-
 $(LIBFT):
 	@$(MAKE) -C ./libft
 
@@ -67,11 +58,6 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "Compiled ✅ $(RED) $(BOLD) $^ $(RESET)"
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
-
-# $(BONUS_DIR)/%.o: ./bonus/%.c
-# 	@mkdir -p $(BONUS_DIR)
-# 	@echo "Compiled ✅ $(BLUE) $(BOLD) $^ $(RESET)"
-# 	@$(CC) $(CFLAGS) -c -o $@ $^
 
 clean:
 	@$(MAKE) clean -C ./libft

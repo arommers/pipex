@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 13:09:18 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/25 22:33:53 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/26 10:57:14 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,7 @@ void	input_check(t_data *data, char **argv, char **envp)
 		error_msg(argv[1], 0, 1);
 	data->outfile = open(argv[4], O_CREAT | O_TRUNC | O_RDWR, 0666);
 	if (data->outfile == -1)
-	{
-		// if(access(argv[2], X_OK) == -1)
-		// 	error_msg(argv[2], 1, 1);
 		error_msg(argv[4], 2, 0);
-	}
 	initialize(data, argv, envp);
 	grep_check (data, argv);
 	if (access(data->cmd1, X_OK) == -1 && access(data->cmd2, X_OK) == -1)
