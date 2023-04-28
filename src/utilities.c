@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 10:32:19 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/26 11:25:49 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/28 10:39:05 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	de_initialize(t_data *data)
 {
 	close (data->buffer[0]);
 	close (data->buffer[1]);
+	close (data->infile);
+	close (data->outfile);
 	waitpid(data->child1, NULL, 0);
 	waitpid(data->child2, &data->status, 0);
 	if (WIFEXITED(data->status))

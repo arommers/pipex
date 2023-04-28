@@ -6,7 +6,7 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/25 14:03:34 by arommers      #+#    #+#                 */
-/*   Updated: 2023/03/25 14:06:47 by arommers      ########   odam.nl         */
+/*   Updated: 2023/04/28 12:25:53 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 	size_t	i;
 
 	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
 	while (s1[i] || s2[i])
 	{
 		if (s1[i] != s2[i])

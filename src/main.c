@@ -6,15 +6,15 @@
 /*   By: arommers <arommers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 11:09:22 by arommers      #+#    #+#                 */
-/*   Updated: 2023/04/25 21:22:08 by adri          ########   odam.nl         */
+/*   Updated: 2023/04/28 14:29:42 by arommers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	leaks(void)
+void	leaks()
 {
-	system("leaks -q pipex");
+	system("leaks pipex");
 }
 
 int	main(int argc, char **argv, char **envp)
