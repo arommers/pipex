@@ -74,7 +74,7 @@ A short summary of the flow of the program.
 
 I want to touch on two aspects in this version of Pipex.  
 
-Firstly, it's important to mention that multipiping and heredoc creation are not currently supported. However, I'm excited to share that these features will be implemented in an upcoming project called 'minishell'. This future project will build upon the groundwork laid here in Pipex. More importantly it will give me a second attempt to actually approach piping in a proper way.
+Firstly, it's important to mention that multipiping and heredoc creation are not currently supported. However, do not fear that I might be slacking of. These features will be implemented in an upcoming project called 'minishell'. This future project has us recreat bash and will build upon the groundwork laid here in Pipex. More importantly it will give me a second attempt to actually approach piping in a proper way.
 
 Secondly, as mentioned I approached input checking in a way that, upon reflection, proved to be less efficient than I had initially intended. Rather than handling these checks within the child processes, I attempted to do so prior to forking. This resulted in a somewhat less streamlined process that resulted in convoluted code to try and emulate, especially, bash error handling. In future iterations (read minishell), I plan to refine this aspect for a smoother execution.
 
