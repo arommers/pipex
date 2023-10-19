@@ -7,7 +7,7 @@ Whether we're working with log files or conducting data analysis, Pipex streamli
 Creating this project challegend and improved our understanding of Unix-like systems, focusing on process creation, file descriptors, and system calls. It's a practical tool with valuable insights into the core mechanisms of modern computing.
 
 
-## Key Concepts  
+### Key Concepts  
 - Process creation using `fork`.
 - Inter-process communication with pipes.
 - Redirection of standard input and output.
@@ -16,7 +16,7 @@ Creating this project challegend and improved our understanding of Unix-like sys
 
 ---
 
-## The Program
+### The Program
 A short summary of the flow of the program.
 
 - **Reading Commands:**
@@ -70,7 +70,7 @@ A short summary of the flow of the program.
 
 ---
 
-## Remarks
+### Remarks
 
 I want to touch on two aspects in this version of Pipex.  
 
@@ -80,7 +80,7 @@ Secondly, as mentioned I approached input checking in a way that, upon reflectio
 
 ---
 
-## Sources
+### Sources
 
 - [Codevault](https://www.youtube.com/watch?v=QD9YKSg3wCc&list=PLK4FY1IoDcHG-jUt93Cl7n7XLQDZ0q7Tv)
 - [Medium tutorial](https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901)
