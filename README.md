@@ -62,8 +62,11 @@ A short summary of the flow of the program.
   Pipex ensures that all file descriptors are closed, and any resources used are properly released.
   It waits for the child process to complete its execution using the [waitpid()](https://www.geeksforgeeks.org/wait-system-call-c/) system call.
 
-*A little side node for the execution of the parsed commands. The commands themselves will be altered by trying to concatenate them with any of the possible paths in the PATHS environment value or the current directory.
-We then use [access()](https://linux.die.net/man/2/access) on the concatenated string to check whether the calling process can access the file pathname. If for example the parsed command is "wrongcmd" the operating system will check if there is a valid pathname to the cmd/executable that we want to execute. In case of "wrongcmd" it is highly unlikely that it will be succesful unless there actually is an executable that is literally named "wrongcmd"
+
+**A little side node for the execution of the parsed commands. The commands themselves will be altered by trying to concatenate them with any of the possible paths in the PATHS environment value or the current directory.*  
+
+*We then use [access()](https://linux.die.net/man/2/access) on the concatenated string to check whether the calling process can access the file pathname.*  
+*If for example the parsed command is "wrongcmd" the 'os' will check if there is a valid pathname to the cmd/executable that we want to execute. In case of "wrongcmd" it is highly unlikely that it will be succesful unless there actually is an executable that is literally named "wrongcmd"*
 
 ---
 
